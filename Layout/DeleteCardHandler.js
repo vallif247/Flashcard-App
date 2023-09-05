@@ -3,12 +3,13 @@ import { deleteCard } from "../utils/api/index";
 import { useHistory } from "react-router-dom";
 
 function DeleteCardHandler({cardId, cards, setCards}) {
+    const deleteCards = cards
     const history = useHistory()
         const clickHandler = () => {
             if (window.confirm("Delete this card? You will not be able to recover it.")) {
             deleteCard(cardId)
             
-        } if (cards) {
+        } if (deleteCards) {
             setCards(cards.filter((card) => cardId !== card.id))
         } else {
             history.push("/")
